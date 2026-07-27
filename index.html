@@ -304,9 +304,10 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
 .cert-card{
   background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);
   padding:18px;display:flex;align-items:flex-start;gap:14px;
-  transition:transform .15s ease, border-color .15s ease;
+  transition:transform .15s ease, border-color .15s ease, background .15s ease;
+  cursor:pointer;text-decoration:none;color:inherit;
 }
-.cert-card:hover{transform:translateY(-2px);border-color:var(--accent-cyan-dim);}
+.cert-card:hover{transform:translateY(-2px);border-color:var(--accent-cyan-dim);background:var(--bg-elevated);}
 .cert-icon{
   width:44px;height:44px;display:flex;align-items:center;justify-content:center;
   background:var(--bg-elevated);border-radius:8px;color:var(--accent-cyan);
@@ -316,6 +317,12 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
 .cert-content h4{font-size:14.5px;margin-bottom:4px;color:var(--text-primary);}
 .cert-content p{font-size:13px;color:var(--text-muted);margin:0;}
 .cert-issuer{font-family:var(--font-mono);font-size:12px;color:var(--text-dim);margin-top:6px;}
+.cert-link{
+  display:flex;align-items:center;justify-content:center;
+  width:24px;height:24px;color:var(--accent-cyan);opacity:0;
+  transition:opacity .15s ease;font-size:14px;flex-shrink:0;
+}
+.cert-card:hover .cert-link{opacity:1;}
 .project-body p{color:var(--text-muted);font-size:13.8px;flex:1;margin-bottom:16px;}
 .tag-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;}
 .tag{
@@ -425,7 +432,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
       <a class="tab" href="#certifications" data-tab><i class="bi bi-award"></i> certifications/</a>
       <a class="tab" href="#contact" data-tab><i class="bi bi-terminal"></i> contact.sh</a>
     </div>
-    <a class="resume-btn" href="https://drive.google.com/file/d/1yRu9DW6577kgQ6xRVCr0cCpng9LlUvGB/view?usp=sharing" target="_blank">
+    <a class="resume-btn" href="https://blobs.vusercontent.net/blob/Aditya_Gupta_Resume-nvc9eaKKy6bRaCGRBCdAfTBnK96bwW.pdf" target="_blank">
       <i class="bi bi-download"></i> resume.pdf
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><i class="bi bi-list"></i></button>
@@ -675,59 +682,65 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
     </div>
 
     <div class="certifications-grid">
-      <div class="cert-card reveal">
+      <a href="https://www.linkedin.com/in/aditya-gupta-a2685b312/details/certifications/" target="_blank" class="cert-card reveal">
         <div class="cert-icon"><i class="bi bi-award"></i></div>
         <div class="cert-content">
           <h4>IBM AI Developer</h4>
           <p>Professional certification in AI development and deployment</p>
           <span class="cert-issuer">IBM</span>
         </div>
-      </div>
+        <div class="cert-link"><i class="bi bi-arrow-up-right"></i></div>
+      </a>
 
-      <div class="cert-card reveal">
+      <a href="https://www.linkedin.com/in/aditya-gupta-a2685b312/details/certifications/" target="_blank" class="cert-card reveal">
         <div class="cert-icon"><i class="bi bi-award"></i></div>
         <div class="cert-content">
           <h4>Generative AI for Web Development</h4>
           <p>Advanced course in building AI-powered web applications</p>
           <span class="cert-issuer">Scrimba</span>
         </div>
-      </div>
+        <div class="cert-link"><i class="bi bi-arrow-up-right"></i></div>
+      </a>
 
-      <div class="cert-card reveal">
+      <a href="https://www.linkedin.com/in/aditya-gupta-a2685b312/details/certifications/" target="_blank" class="cert-card reveal">
         <div class="cert-icon"><i class="bi bi-award"></i></div>
         <div class="cert-content">
           <h4>Oracle Java Programmer</h4>
           <p>Professional Java programming certification</p>
           <span class="cert-issuer">Oracle</span>
         </div>
-      </div>
+        <div class="cert-link"><i class="bi bi-arrow-up-right"></i></div>
+      </a>
 
-      <div class="cert-card reveal">
+      <a href="https://www.linkedin.com/in/aditya-gupta-a2685b312/details/certifications/" target="_blank" class="cert-card reveal">
         <div class="cert-icon"><i class="bi bi-award"></i></div>
         <div class="cert-content">
           <h4>Junior Software Developer Professional</h4>
           <p>Entry-level software development professional certification</p>
           <span class="cert-issuer">Amazon</span>
         </div>
-      </div>
+        <div class="cert-link"><i class="bi bi-arrow-up-right"></i></div>
+      </a>
 
-      <div class="cert-card reveal">
+      <a href="https://www.linkedin.com/in/aditya-gupta-a2685b312/details/certifications/" target="_blank" class="cert-card reveal">
         <div class="cert-icon"><i class="bi bi-award"></i></div>
         <div class="cert-content">
           <h4>Full Stack Developer</h4>
           <p>Comprehensive full-stack development certification</p>
           <span class="cert-issuer">Microsoft</span>
         </div>
-      </div>
+        <div class="cert-link"><i class="bi bi-arrow-up-right"></i></div>
+      </a>
 
-      <div class="cert-card reveal">
+      <a href="https://www.linkedin.com/in/aditya-gupta-a2685b312/details/certifications/" target="_blank" class="cert-card reveal">
         <div class="cert-icon"><i class="bi bi-award"></i></div>
         <div class="cert-content">
           <h4>Foundations of UX Design</h4>
           <p>Professional UX design fundamentals and principles</p>
           <span class="cert-issuer">Google</span>
         </div>
-      </div>
+        <div class="cert-link"><i class="bi bi-arrow-up-right"></i></div>
+      </a>
     </div>
   </div>
 </section>
