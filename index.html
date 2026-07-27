@@ -223,33 +223,51 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
 }
 @keyframes blink{50%{opacity:0;}}
 
-/* Animated name */
+/* Animated name - Looping typewriter effect */
 .name-animated{
   color:var(--accent-cyan);
   font-weight:600;
   display:inline-block;
+  min-height:1.3em;
 }
-.name-animated span{
+.name-char{
   display:inline-block;
-  animation:fadeInUp 0.6s ease-out forwards;
+  opacity:0;
+  animation:typeChar 16s steps(1) infinite;
 }
-.name-animated span:nth-child(1){animation-delay:0.05s;}
-.name-animated span:nth-child(2){animation-delay:0.1s;}
-.name-animated span:nth-child(3){animation-delay:0.15s;}
-.name-animated span:nth-child(4){animation-delay:0.2s;}
-.name-animated span:nth-child(5){animation-delay:0.25s;}
-.name-animated span:nth-child(6){animation-delay:0.3s;}
-.name-animated span:nth-child(7){animation-delay:0.35s;}
-.name-animated span:nth-child(8){animation-delay:0.4s;}
-.name-animated span:nth-child(9){animation-delay:0.45s;}
-.name-animated span:nth-child(10){animation-delay:0.5s;}
-.name-animated span:nth-child(11){animation-delay:0.55s;}
-.name-animated span:nth-child(12){animation-delay:0.6s;}
-.name-animated span:nth-child(13){animation-delay:0.65s;}
-.name-animated span:nth-child(14){animation-delay:0.7s;}
-@keyframes fadeInUp{
-  from{opacity:0;transform:translateY(8px);}
-  to{opacity:1;transform:translateY(0);}
+.name-char:nth-child(1){animation-delay:0s;}
+.name-char:nth-child(2){animation-delay:0.08s;}
+.name-char:nth-child(3){animation-delay:0.16s;}
+.name-char:nth-child(4){animation-delay:0.24s;}
+.name-char:nth-child(5){animation-delay:0.32s;}
+.name-char:nth-child(6){animation-delay:0.4s;}
+.name-char:nth-child(7){animation-delay:0.48s;}
+.name-char:nth-child(8){animation-delay:0.56s;}
+.name-char:nth-child(9){animation-delay:0.64s;}
+.name-char:nth-child(10){animation-delay:0.72s;}
+.name-char:nth-child(11){animation-delay:0.8s;}
+.name-char:nth-child(12){animation-delay:0.88s;}
+.name-char:nth-child(13){animation-delay:0.96s;}
+.name-char:nth-child(14){animation-delay:1.04s;}
+@keyframes typeChar{
+  0%,1%{opacity:0;}
+  2%,98%{opacity:1;}
+  99%,100%{opacity:0;}
+}
+
+/* Profile photo */
+.profile-photo{
+  width:160px;
+  height:160px;
+  border-radius:16px;
+  object-fit:cover;
+  border:2px solid var(--accent-cyan);
+  box-shadow:0 12px 32px rgba(0,0,0,0.4);
+  animation:fadeInScale 0.8s ease-out;
+}
+@keyframes fadeInScale{
+  from{opacity:0;transform:scale(0.95);}
+  to{opacity:1;transform:scale(1);}
 }
 
 /* ===== SECTION SHELL — file header pattern ===== */
@@ -461,6 +479,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
 @media (max-width: 720px){
   .projects-grid{grid-template-columns:1fr;}
   .certifications-grid{grid-template-columns:1fr;}
+  .profile-photo{width:120px;height:120px;}
   .tabs{position:fixed;top:56px;left:0;right:0;background:var(--bg-surface);flex-direction:column;
     border-bottom:1px solid var(--border);display:none;}
   .tabs.open{display:flex;}
@@ -518,14 +537,17 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
       </div>
     </div>
 
-    <div class="terminal reveal">
-      <div class="terminal-head">
-        <span class="dots"><span></span><span></span><span></span></span>
-        <span class="terminal-title">whoami.sh — zsh</span>
-      </div>
-      <div class="terminal-body" id="typeTerminal">
-        <div class="line"><span class="prompt">➜</span> whoami</div>
-        <div class="line type-target" id="typeLine"></div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <img src="profile.jpg" alt="Aditya Gupta" class="profile-photo reveal">
+      <div class="terminal reveal" style="width:100%;">
+        <div class="terminal-head">
+          <span class="dots"><span></span><span></span><span></span></span>
+          <span class="terminal-title">whoami.sh — zsh</span>
+        </div>
+        <div class="terminal-body" id="typeTerminal">
+          <div class="line"><span class="prompt">➜</span> whoami</div>
+          <div class="line type-target" id="typeLine"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -901,20 +923,21 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
 </div>
 
 <script>
-// Animated name with character-by-character fade-in
+// Animated name with looping character-by-character typing effect
 function animateName(){
   const typeEl = document.getElementById('typeLine');
   const name = "Aditya Gupta";
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   
   if(reduceMotion){
-    typeEl.innerHTML = `<span class="name-animated">${name}</span><span class="cursor"></span>`;
+    typeEl.innerHTML = `<span class="name-animated"><span class="name-char">${name}</span></span><span class="cursor"></span>`;
     return;
   }
   
+  // Create animated name with character spans for looping animation
   let html = '<span class="name-animated">';
   for(let i = 0; i < name.length; i++){
-    html += `<span>${name[i]}</span>`;
+    html += `<span class="name-char">${name[i]}</span>`;
   }
   html += '</span><span class="cursor"></span>';
   typeEl.innerHTML = html;
