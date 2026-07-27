@@ -223,6 +223,35 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
 }
 @keyframes blink{50%{opacity:0;}}
 
+/* Animated name */
+.name-animated{
+  color:var(--accent-cyan);
+  font-weight:600;
+  display:inline-block;
+}
+.name-animated span{
+  display:inline-block;
+  animation:fadeInUp 0.6s ease-out forwards;
+}
+.name-animated span:nth-child(1){animation-delay:0.05s;}
+.name-animated span:nth-child(2){animation-delay:0.1s;}
+.name-animated span:nth-child(3){animation-delay:0.15s;}
+.name-animated span:nth-child(4){animation-delay:0.2s;}
+.name-animated span:nth-child(5){animation-delay:0.25s;}
+.name-animated span:nth-child(6){animation-delay:0.3s;}
+.name-animated span:nth-child(7){animation-delay:0.35s;}
+.name-animated span:nth-child(8){animation-delay:0.4s;}
+.name-animated span:nth-child(9){animation-delay:0.45s;}
+.name-animated span:nth-child(10){animation-delay:0.5s;}
+.name-animated span:nth-child(11){animation-delay:0.55s;}
+.name-animated span:nth-child(12){animation-delay:0.6s;}
+.name-animated span:nth-child(13){animation-delay:0.65s;}
+.name-animated span:nth-child(14){animation-delay:0.7s;}
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
 /* ===== SECTION SHELL — file header pattern ===== */
 .section{padding:88px 0;border-top:1px solid var(--border-soft);}
 .file-header{
@@ -336,6 +365,32 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
 .project-link i{transition:transform .15s ease;}
 .project-link:hover i{transform:translateX(3px);}
 
+/* ===== EXPERIENCE — timeline cards ===== */
+.experience-timeline{display:flex;flex-direction:column;gap:28px;position:relative;padding-left:28px;}
+.experience-timeline::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg, var(--accent-cyan) 0%, var(--accent-cyan-dim) 100%);
+}
+.experience-card{
+  background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:20px;position:relative;
+  transition:transform .15s ease, border-color .15s ease;
+}
+.experience-card::before{
+  content:'';position:absolute;left:-39px;top:26px;width:16px;height:16px;
+  background:var(--bg-base);border:2px solid var(--accent-cyan);border-radius:50%;
+}
+.experience-card:hover{transform:translateX(6px);border-color:var(--accent-cyan-dim);}
+.experience-card h4{font-size:15.5px;margin-bottom:4px;color:var(--text-primary);}
+.experience-card .role{font-family:var(--font-mono);font-size:12.5px;color:var(--accent-cyan);margin-bottom:8px;}
+.experience-card .date{font-family:var(--font-mono);font-size:12px;color:var(--text-dim);margin-bottom:12px;}
+.experience-card ul{list-style:none;margin:0;}
+.experience-card li{
+  font-size:13.5px;color:var(--text-muted);margin-bottom:8px;padding-left:16px;
+  position:relative;line-height:1.5;
+}
+.experience-card li::before{content:'▸';position:absolute;left:0;color:var(--accent-amber);}
+
 /* ===== CONTACT ===== */
 .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:flex-start;}
 .contact-copy p{color:var(--text-muted);font-size:15.5px;max-width:40ch;margin-bottom:22px;}
@@ -400,6 +455,8 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
   .projects-grid{grid-template-columns:repeat(2,1fr);}
   .certifications-grid{grid-template-columns:1fr;}
   .skills-groups{grid-template-columns:1fr;}
+  .experience-timeline{padding-left:22px;}
+  .experience-card::before{left:-33px;}
 }
 @media (max-width: 720px){
   .projects-grid{grid-template-columns:1fr;}
@@ -428,10 +485,14 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
       <a class="tab active" href="#home" data-tab><i class="bi bi-house"></i> home.tsx</a>
       <a class="tab" href="#about" data-tab><i class="bi bi-markdown"></i> about.md</a>
       <a class="tab" href="#skills" data-tab><i class="bi bi-braces-asterisk"></i> skills.json</a>
+      <a class="tab" href="#experience" data-tab><i class="bi bi-briefcase"></i> experience.md</a>
       <a class="tab" href="#projects" data-tab><i class="bi bi-folder2-open"></i> projects/</a>
       <a class="tab" href="#certifications" data-tab><i class="bi bi-award"></i> certifications/</a>
       <a class="tab" href="#contact" data-tab><i class="bi bi-terminal"></i> contact.sh</a>
     </div>
+    <a class="resume-btn" href="https://codolio.com/profile/adit2606" target="_blank">
+      <i class="bi bi-code-slash"></i> codolio
+    </a>
     <a class="resume-btn" href="https://blobs.vusercontent.net/blob/Aditya_Gupta_Resume-nvc9eaKKy6bRaCGRBCdAfTBnK96bwW.pdf" target="_blank">
       <i class="bi bi-download"></i> resume.pdf
     </a>
@@ -594,6 +655,41 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
         <div class="dep-row"><span class="name"><i class="bi bi-cpu"></i>Applied AI / ML</span><span class="ver beta">in-progress</span></div>
         <div class="dep-row"><span class="name"><i class="bi bi-lightbulb"></i>System design basics</span><span class="ver beta">in-progress</span></div>
         <div class="dep-row"><span class="name"><i class="bi bi-translate"></i>German (A2)</span><span class="ver beta">in-progress</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience" style="border-top:1px solid var(--border-soft);">
+  <div class="wrap">
+    <div class="file-header reveal">
+      <span class="dots"><span></span><span></span><span></span></span>
+      <span class="fname">experience.md</span>
+      <h2>Experience</h2>
+    </div>
+
+    <div class="experience-timeline">
+      <div class="experience-card reveal">
+        <h4>AI/Technology Virtual Intern</h4>
+        <div class="role">Infosys Springboard</div>
+        <div class="date">Ongoing</div>
+        <ul>
+          <li>Completing industry-oriented AI learning modules and hands-on assignments as part of a virtual internship program</li>
+          <li>Building practical skills in software development and emerging technologies through guided projects and case studies</li>
+          <li>Applying AI and software engineering concepts to real-world style problem statements</li>
+        </ul>
+      </div>
+
+      <div class="experience-card reveal">
+        <h4>Web Development Intern</h4>
+        <div class="role">Learnflu (Remote)</div>
+        <div class="date">May 2025 – Jun 2025</div>
+        <ul>
+          <li>Developed responsive web interfaces using HTML, CSS, and JavaScript</li>
+          <li>Built reusable UI components, improving frontend functionality and maintainability</li>
+          <li>Used Git and GitHub for version control and collaborative development workflows</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -805,7 +901,26 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01
 </div>
 
 <script>
-// Typing effect
+// Animated name with character-by-character fade-in
+function animateName(){
+  const typeEl = document.getElementById('typeLine');
+  const name = "Aditya Gupta";
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  if(reduceMotion){
+    typeEl.innerHTML = `<span class="name-animated">${name}</span><span class="cursor"></span>`;
+    return;
+  }
+  
+  let html = '<span class="name-animated">';
+  for(let i = 0; i < name.length; i++){
+    html += `<span>${name[i]}</span>`;
+  }
+  html += '</span><span class="cursor"></span>';
+  typeEl.innerHTML = html;
+}
+
+// Typing effect for taglines
 const phrases = [
   "Aditya Gupta — Full-Stack Engineer",
   "B.Tech CSE @ NIET (2024–2028)",
@@ -817,23 +932,30 @@ const phrases = [
 const typeEl = document.getElementById('typeLine');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+animateName();
+
 function typeLoop(){
   if(reduceMotion){ typeEl.innerHTML = phrases[0] + '<span class="cursor"></span>'; return; }
   let p = 0, i = 0, deleting = false;
-  function tick(){
-    const current = phrases[p];
-    if(!deleting){
-      i++;
-      if(i > current.length){ deleting = true; setTimeout(tick, 1400); return; }
-    } else {
-      i--;
-      if(i === 0){ deleting = false; p = (p+1) % phrases.length; }
+  
+  // Start typing taglines after a delay
+  setTimeout(() => {
+    function tick(){
+      const current = phrases[p];
+      if(!deleting){
+        i++;
+        if(i > current.length){ deleting = true; setTimeout(tick, 1400); return; }
+      } else {
+        i--;
+        if(i === 0){ deleting = false; p = (p+1) % phrases.length; }
+      }
+      typeEl.innerHTML = current.slice(0, i) + '<span class="cursor"></span>';
+      setTimeout(tick, deleting ? 35 : 65);
     }
-    typeEl.innerHTML = current.slice(0, i) + '<span class="cursor"></span>';
-    setTimeout(tick, deleting ? 35 : 65);
-  }
-  tick();
+    tick();
+  }, 2000); // Wait 2 seconds before starting taglines
 }
+
 typeLoop();
 
 // Status bar clock
